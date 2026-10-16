@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free VIN Decoder – Full Specs, MPG, Safety Ratings & Photos</title>
+<meta name="description" content="Decode any VIN for free: year, make, model, trim, engine, horsepower, plant, plus matching EPA specs, fuel economy, dimensions, NHTSA safety ratings and photos. Bulk VIN decoding to CSV.">
+<style>
+  :root { --bg:#f4f6fa; --card:#fff; --line:#e3e8ef; --text:#0f172a; --muted:#64748b; --accent:#2563eb; --ok:#16a34a; --bad:#dc2626; --amber:#f59e0b; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14.5px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  header { background:linear-gradient(120deg,#0f172a,#1e3a8a); color:#fff; padding:34px 20px 70px; text-align:center; }
+  header h1 { margin:0 0 6px; font-size:30px; }
+  header p { margin:0; opacity:.8; }
+  .demo { display:none; background:var(--amber); color:#111; font-weight:700; font-size:12px; padding:3px 8px; border-radius:6px; margin-top:10px; }
+  .search { max-width:760px; margin:-38px auto 0; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(15,23,42,.12); padding:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .search input { flex:1; min-width:220px; padding:14px 16px; font-size:18px; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:10px; font-family:ui-monospace,Menlo,monospace; }
+  .search button { padding:14px 22px; border:0; border-radius:10px; background:var(--accent); color:#fff; font-weight:800; font-size:15px; cursor:pointer; }
+  .tabs { max-width:760px; margin:12px auto 0; display:flex; gap:8px; justify-content:center; }
+  .tabs a { color:var(--muted); font-weight:700; cursor:pointer; padding:4px 10px; border-radius:999px; }
+  .tabs a.on { background:#e0e7ff; color:#1e3a8a; }
+  main { max-width:1100px; margin:18px auto 40px; padding:0 18px; }
+  .msg { max-width:760px; margin:0 auto; text-align:center; color:var(--muted); padding:30px; }
+  .warn { background:#fef3c7; border:1px solid #fde68a; color:#92400e; border-radius:10px; padding:8px 12px; margin-bottom:12px; font-size:13px; }
+  .hero { display:grid; grid-template-columns:1.2fr 1fr; gap:16px; }
+  @media (max-width:860px) { .hero, .grid2 { grid-template-columns:1fr !important; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .card h2 { margin:0 0 4px; font-size:24px; } .card h3 { margin:0 0 10px; font-size:15px; }
+  .vinchip { font-family:ui-monospace,Menlo,monospace; background:#eef2ff; color:#3730a3; padding:2px 8px; border-radius:6px; font-size:13px; }
+  .photo img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; background:#eef2f7; }
+  .attr { font-size:11px; color:var(--muted); margin-top:4px; }
+  dl { display:grid; grid-template-columns:auto 1fr; gap:6px 14px; margin:0; }
+  dt { color:var(--muted); } dd { margin:0; font-weight:600; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-top:16px; }
+  .kpi { background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .kpi b { display:block; font-size:22px; } .kpi span { font-size:12px; color:var(--muted); }
+  .stars { color:#f59e0b; letter-spacing:2px; font-size:18px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  td, th { padding:7px 8px; border-bottom:1px solid var(--line); text-align:left; }
+  th { color:var(--muted); font-size:11px; text-transform:uppercase; }
+  .tag { font-size:11px; font-weight:800; padding:2px 7px; border-radius:999px; background:#dcfce7; color:#166534; }
+  textarea { width:100%; min-height:160px; padding:12px; border:1px solid var(--line); border-radius:10px; font-family:ui-monospace,Menlo,monospace; font-size:13px; }
+  .btn { padding:10px 16px; border:0; border-radius:9px; background:var(--accent); color:#fff; font-weight:700; cursor:pointer; }
+  .btn.ghost { background:#e2e8f0; color:var(--text); }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:10px 20px 30px; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔎 Free VIN Decoder</h1>
+  <p>Year, make, model, engine and plant — plus matching specs, MPG, safety ratings and photos</p>
+  <span class="demo" id="demo">DEMO MODE – fictional sample data</span>
+</header>
+<form class="search" id="f">
+  <input id="vin" maxlength="17" placeholder="Enter a 17-character VIN" autocomplete="off" spellcheck="false">
+  <button>Decode VIN</button>
+</form>
+<div class="tabs"><a class="on" data-t="one">Single VIN</a><a data-t="batch">Bulk decode (up to 50)</a></div>
+<main id="out"><div class="msg">Find the VIN on the driver-side dashboard, the door jamb sticker or your registration documents.</div></main>
+<footer>Data: <a href="https://rapidapi.com/belchiorarkad-FqvHs2EDOtP/api/car-specs-api" target="_blank" rel="noopener">Car Specs API</a> (NHTSA vPIC, US EPA, NHTSA NCAP, Wikimedia Commons) · Support: <a href="https://t.me/pintoflow" target="_blank" rel="noopener">Telegram @pintoflow</a><br>This tool decodes factory data. It is not a vehicle history report.</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const v = (x, unit = '') => (x == null || x === '' ? '–' : esc(x) + unit);
+async function api(route, params, opts) {
+  const r = await fetch('/api' + route + (params ? '?' + new URLSearchParams(params) : ''), opts);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || j.success === false) { const e = new Error(j.error?.message || `Error ${r.status}`); e.code = j.error?.code; e.details = j.error?.details; throw e; }
+  return j;
+}
+const stars = (n) => { n = Number(n); return n ? '★'.repeat(n) + '<span style="color:#e2e8f0">' + '★'.repeat(5 - n) + '</span>' : '–'; };
+
+document.querySelectorAll('.tabs a').forEach((a) => a.onclick = () => {
+  document.querySelectorAll('.tabs a').forEach((x) => x.classList.toggle('on', x === a));
+  $('f').style.display = a.dataset.t === 'one' ? '' : 'none';
+  if (a.dataset.t === 'batch') batchView(); else $('out').innerHTML = '<div class="msg">Enter a VIN above.</div>';
+});
+
+$('f').onsubmit = async (e) => {
+  e.preventDefault();
+  const vin = $('vin').value.trim().toUpperCase();
+  const out = $('out');
+  out.innerHTML = '<div class="msg">Decoding…</div>';
+  try {
+    const val = (await api('/vin/validate', { vin })).data;
+    if (val && val.valid === false && val.suggestion) {
+      out.innerHTML = `<div class="msg">This VIN doesn't look right${val.message ? ': ' + esc(val.message) : ''}. Did you mean <a href="#" id="sug" class="vinchip">${esc(val.suggestion)}</a>?</div>`;
+      $('sug').onclick = (ev) => { ev.preventDefault(); $('vin').value = val.suggestion; $('f').requestSubmit(); };
+      return;
+    }
+    const { data, meta } = await api('/vin/specs', { vin });
+    render(data, meta);
+  } catch (err) {
+    if (err.code === 'VEHICLE_NOT_IDENTIFIED' || err.code === 'NO_SPEC_DATA') {
+      try { const { data } = await api('/vin/decode', { vin, compact: 'true' }); return render({ vin: data.vin || data }, {}); } catch {}
+    }
+    out.innerHTML = `<div class="msg">${esc(err.message)}</div>`;
+  }
+};
+
+function render(d, meta) {
+  const x = d.vin || {};
+  const spec = (d.specs || []).find((s) => (d.likelyTrimIds || []).includes(s.id)) || (d.specs || [])[0];
+  const img = (d.images || [])[0];
+  const safety = (d.safetyRatings || [])[0];
+  const dim = (d.dimensions || [])[0];
+  const fe = spec?.fuelEconomy;
+  $('out').innerHTML = `
+    ${(meta?.warnings || []).map((w) => `<div class="warn">⚠️ ${esc(w)}</div>`).join('')}
+    <div class="hero">
+      <div class="card">
+        <div class="vinchip">${esc(x.vin)}</div>
+        <h2 style="margin-top:8px">${v(x.modelYear)} ${v(x.make)} ${v(x.model)} ${x.trim ? esc(x.trim) : ''}</h2>
+        <div style="color:var(--muted);margin-bottom:12px">${v(x.bodyClass)} · ${v(x.vehicleType)} · decode ${v(x.decodeQuality)}</div>
+        <dl>
+          <dt>Engine</dt><dd>${x.engine ? `${v(x.engine.displacementL, ' L')} ${v(x.engine.configuration)} ${v(x.engine.cylinders)}-cyl${x.engine.turbo ? ' turbo' : ''}` : '–'}</dd>
+          <dt>Horsepower</dt><dd>${v(x.engine?.horsepower, ' hp')}</dd>
+          <dt>Transmission</dt><dd>${v(x.transmission?.style)}${x.transmission?.speeds ? ' · ' + x.transmission.speeds + '-speed' : ''}</dd>
+          <dt>Drive / fuel</dt><dd>${v(x.driveType)} · ${v(x.fuelType)}${x.electrificationLevel ? ' · ' + esc(x.electrificationLevel) : ''}</dd>
+          <dt>Doors / seats</dt><dd>${v(x.doors)} / ${v(x.seats)}</dd>
+          <dt>Manufacturer</dt><dd>${v(x.manufacturer)}</dd>
+          <dt>Built in</dt><dd>${[x.plant?.city, x.plant?.state, x.plant?.country].filter(Boolean).map(esc).join(', ') || '–'}</dd>
+          <dt>Weight class</dt><dd>${v(x.weightClass)}</dd>
+        </dl>
+      </div>
+      <div class="card photo">${img ? `<img src="${esc(img.thumbnailUrl || img.url)}" alt="${esc(img.title)}"><div class="attr">${esc(img.attribution)}${img.matchesYear === false ? ' · photo may show another model year' : ''}</div>` : '<div class="msg">No photo available</div>'}</div>
+    </div>
+    ${spec ? `<div class="kpis">
+      <div class="kpi"><b>${v(fe?.mpg?.combined)}</b><span>${spec.powertrain === 'Electric' ? 'MPGe' : 'MPG'} combined</span></div>
+      <div class="kpi"><b>${v(fe?.mpg?.city)} / ${v(fe?.mpg?.highway)}</b><span>city / highway</span></div>
+      ${fe?.electric ? `<div class="kpi"><b>${v(fe.electric.rangeMiles, ' mi')}</b><span>electric range</span></div>` : `<div class="kpi"><b>${v(fe?.litersPer100Km?.combined)}</b><span>L/100 km</span></div>`}
+      <div class="kpi"><b>$${v(spec.costs?.annualFuelCostUsd)}</b><span>EPA annual fuel cost</span></div>
+      <div class="kpi"><b>${v(spec.emissions?.co2GramsPerMile)}</b><span>g CO₂ / mile</span></div>
+      <div class="kpi"><b>${safety ? stars(safety.overallRating) : '–'}</b><span>NHTSA overall</span></div>
+    </div>` : ''}
+    <div class="grid2">
+      <div class="card"><h3>Matching trims</h3>${(d.trims || []).length ? `<table><tr><th>Trim</th><th>Engine</th><th></th></tr>${d.trims.map((t) => `<tr><td>${esc(t.model)}</td><td>${esc(t.option || t.name)}</td><td>${t.engineMatch || (d.likelyTrimIds || []).includes(t.id) ? '<span class="tag">matches VIN</span>' : ''}</td></tr>`).join('')}</table>` : '<p style="color:var(--muted)">No EPA trims for this vehicle.</p>'}</div>
+      <div class="card"><h3>Dimensions & safety</h3>${dim ? `<dl>
+        <dt>Length</dt><dd>${v(dim.imperial?.lengthIn, ' in')} (${v(dim.metric?.lengthCm, ' cm')})</dd>
+        <dt>Width / height</dt><dd>${v(dim.imperial?.widthIn, ' in')} / ${v(dim.imperial?.heightIn, ' in')}</dd>
+        <dt>Wheelbase</dt><dd>${v(dim.imperial?.wheelbaseIn, ' in')}</dd>
+        <dt>Curb weight</dt><dd>${v(dim.imperial?.curbWeightLb, ' lb')} (${v(dim.metric?.curbWeightKg, ' kg')})</dd></dl>` : '<p style="color:var(--muted)">No dimension data.</p>'}
+        ${safety ? `<dl style="margin-top:10px"><dt>Frontal crash</dt><dd class="stars">${stars(safety.frontCrash?.overall)}</dd><dt>Side crash</dt><dd class="stars">${stars(safety.sideCrash?.overall)}</dd><dt>Rollover</dt><dd class="stars">${stars(safety.rollover?.rating)}</dd></dl>` : ''}
+      </div>
+    </div>`;
+}
+
+function batchView() {
+  $('out').innerHTML = `<div class="card"><h3>Bulk VIN decoder</h3><p style="color:var(--muted);margin-top:0">Paste up to 50 VINs, one per line. One bad VIN doesn't stop the others.</p>
+    <textarea id="vins" placeholder="1HGCM82633A004352&#10;5YJ3E1EA7KF317000"></textarea>
+    <div style="display:flex;gap:8px;margin-top:10px"><button class="btn" id="go">Decode all</button><button class="btn ghost" id="csv" disabled>Download CSV</button></div><div id="bres" style="margin-top:14px"></div></div>`;
+  let rows = [];
+  $('go').onclick = async () => {
+    const vins = [...new Set($('vins').value.split(/\s+/).map((s) => s.trim().toUpperCase()).filter(Boolean))].slice(0, 50);
+    if (!vins.length) return;
+    $('bres').innerHTML = 'Decoding…';
+    try {
+      const { data } = await api('/vin/batch', null, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ vins }) });
+      const list = Array.isArray(data) ? data : data.results || data.items || [];
+      rows = list.map((r) => { const x = r.data?.vin || r.data || r; return { vin: r.vin || x.vin, ok: r.success !== false && !r.error, year: x.modelYear, make: x.make, model: x.model, body: x.bodyClass, fuel: x.fuelType, engine: x.engine ? `${x.engine.displacementL ?? ''}L ${x.engine.cylinders ?? ''}cyl` : '', error: r.error?.message || '' }; });
+      $('bres').innerHTML = `<table><tr><th>VIN</th><th>Year</th><th>Make</th><th>Model</th><th>Body</th><th>Engine</th><th>Status</th></tr>${rows.map((r) => `<tr><td class="vinchip">${esc(r.vin)}</td><td>${v(r.year)}</td><td>${v(r.make)}</td><td>${v(r.model)}</td><td>${v(r.body)}</td><td>${v(r.engine)}</td><td>${r.ok ? '✅' : '❌ ' + esc(r.error)}</td></tr>`).join('')}</table>`;
+      $('csv').disabled = !rows.length;
+    } catch (e) { $('bres').innerHTML = esc(e.message); }
+  };
+  $('csv').onclick = () => {
+    const cols = ['vin', 'year', 'make', 'model', 'body', 'fuel', 'engine', 'error'];
+    const csv = [cols.join(',')].concat(rows.map((r) => cols.map((c) => `"${String(r[c] ?? '').replace(/"/g, '""')}"`).join(','))).join('\n');
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([csv], { type: 'text/csv' })), download: 'vin-decode.csv' });
+    a.click();
+  };
+}
+
+fetch('/api/config').then((r) => r.json()).then((c) => { if (c.demo) { $('demo').style.display = 'inline-block'; $('vin').value = '1DMBC1234RX000001'; } });
+</script>
+</body>
+</html>
