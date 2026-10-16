@@ -1,0 +1,1 @@
+{ "name": "free-vin-decoder", "version": "1.0.0", "description": "Free VIN decoder with full specs, MPG, safety ratings, photos and bulk VIN decoding", "main": "server.js", "scripts": { "start": "node server.js" }, "engines": { "node": ">=18" }, "keywords": ["vin-decoder","vin-lookup","car-specs","nhtsa","epa"], "license": "MIT" }

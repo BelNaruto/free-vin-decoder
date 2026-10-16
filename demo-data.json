@@ -1,0 +1,641 @@
+{
+ "_note": "SAMPLE DATA for demo mode only. Makes, models and numbers are fictional.",
+ "specs": {
+  "9001": {
+   "id": 9001,
+   "year": 2024,
+   "make": "Demo Motors",
+   "model": "Aurora Sedan",
+   "baseModel": "Aurora Sedan",
+   "vehicleClass": "Midsize Cars",
+   "powertrain": "Gasoline",
+   "drivetrain": "Front-Wheel Drive",
+   "engine": {
+    "cylinders": 4,
+    "displacementL": 2.0,
+    "turbocharged": false,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": null,
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 7,
+    "description": "Automatic (AV-S7)",
+    "continuouslyVariable": true
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": null
+   },
+   "interior": {
+    "body": "4-door",
+    "passengerVolumeCuFt": 99,
+    "luggageVolumeCuFt": 15
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 32,
+     "highway": 41,
+     "combined": 35
+    },
+    "litersPer100Km": {
+     "city": 7.3,
+     "highway": 5.7,
+     "combined": 6.7
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 252,
+    "co2GramsPerKm": 157,
+    "epaGreenhouseGasScore": 7,
+    "epaFuelEconomyScore": 7,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 1600,
+    "fiveYearSavingsVsAverageUsd": 2000
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Demo Motors Aurora Sedan \u2014 Gasoline, Automatic (AV-S7), Front-Wheel Drive, 35 MPG combined"
+  },
+  "9002": {
+   "id": 9002,
+   "year": 2024,
+   "make": "Demo Motors",
+   "model": "Aurora Sedan Turbo",
+   "baseModel": "Aurora Sedan",
+   "vehicleClass": "Midsize Cars",
+   "powertrain": "Gasoline",
+   "drivetrain": "Front-Wheel Drive",
+   "engine": {
+    "cylinders": 4,
+    "displacementL": 1.5,
+    "turbocharged": true,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": null,
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 10,
+    "description": "Automatic (S10)",
+    "continuouslyVariable": false
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": null
+   },
+   "interior": {
+    "body": "4-door",
+    "passengerVolumeCuFt": 99,
+    "luggageVolumeCuFt": 15
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 29,
+     "highway": 37,
+     "combined": 32
+    },
+    "litersPer100Km": {
+     "city": 8.1,
+     "highway": 6.4,
+     "combined": 7.3
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 277,
+    "co2GramsPerKm": 172,
+    "epaGreenhouseGasScore": 6,
+    "epaFuelEconomyScore": 6,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 1750,
+    "fiveYearSavingsVsAverageUsd": 1250
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Demo Motors Aurora Sedan Turbo \u2014 Gasoline, Automatic (S10), Front-Wheel Drive, 32 MPG combined"
+  },
+  "9003": {
+   "id": 9003,
+   "year": 2024,
+   "make": "Demo Motors",
+   "model": "Aurora Hybrid",
+   "baseModel": "Aurora Hybrid",
+   "vehicleClass": "Midsize Cars",
+   "powertrain": "Hybrid",
+   "drivetrain": "Front-Wheel Drive",
+   "engine": {
+    "cylinders": 4,
+    "displacementL": 2.0,
+    "turbocharged": false,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": null,
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 1,
+    "description": "Automatic (variable gear ratios)",
+    "continuouslyVariable": true
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": null
+   },
+   "interior": {
+    "body": "4-door",
+    "passengerVolumeCuFt": 99,
+    "luggageVolumeCuFt": 14
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 51,
+     "highway": 47,
+     "combined": 49
+    },
+    "litersPer100Km": {
+     "city": 4.6,
+     "highway": 5.0,
+     "combined": 4.8
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 181,
+    "co2GramsPerKm": 112,
+    "epaGreenhouseGasScore": 8,
+    "epaFuelEconomyScore": 10,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 1150,
+    "fiveYearSavingsVsAverageUsd": 4500
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Demo Motors Aurora Hybrid \u2014 Hybrid, Automatic (variable gear ratios), Front-Wheel Drive, 49 MPG combined"
+  },
+  "9004": {
+   "id": 9004,
+   "year": 2024,
+   "make": "Demo Motors",
+   "model": "Volt-E Crossover",
+   "baseModel": "Volt-E Crossover",
+   "vehicleClass": "Small Sport Utility Vehicle 4WD",
+   "powertrain": "Electric",
+   "drivetrain": "All-Wheel Drive",
+   "engine": null,
+   "electricMotor": "Front 160 kW, rear 160 kW",
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 1,
+    "description": "Automatic (A1)",
+    "continuouslyVariable": false
+   },
+   "fuel": {
+    "type": "Electricity",
+    "primary": "Electricity",
+    "secondary": null
+   },
+   "interior": {
+    "body": "SUV",
+    "passengerVolumeCuFt": 104,
+    "luggageVolumeCuFt": 28
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 124,
+     "highway": 105,
+     "combined": 115
+    },
+    "litersPer100Km": null,
+    "electric": {
+     "kWhPer100Miles": {
+      "city": 27.2,
+      "highway": 32.1,
+      "combined": 29.3
+     },
+     "rangeMiles": 291,
+     "rangeKm": 468,
+     "chargeTimeHours240V": 8
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 0,
+    "co2GramsPerKm": 0,
+    "epaGreenhouseGasScore": 10,
+    "epaFuelEconomyScore": 10,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 750,
+    "fiveYearSavingsVsAverageUsd": 7750
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Demo Motors Volt-E Crossover \u2014 Electric, Automatic (A1), All-Wheel Drive, 115 MPGe combined"
+  },
+  "9005": {
+   "id": 9005,
+   "year": 2024,
+   "make": "Sample Auto",
+   "model": "Trailmark SUV AWD",
+   "baseModel": "Trailmark SUV",
+   "vehicleClass": "Small Sport Utility Vehicle 4WD",
+   "powertrain": "Gasoline",
+   "drivetrain": "All-Wheel Drive",
+   "engine": {
+    "cylinders": 4,
+    "displacementL": 2.5,
+    "turbocharged": false,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": null,
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 8,
+    "description": "Automatic (S8)",
+    "continuouslyVariable": false
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": null
+   },
+   "interior": {
+    "body": "SUV",
+    "passengerVolumeCuFt": 102,
+    "luggageVolumeCuFt": 37
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 27,
+     "highway": 34,
+     "combined": 30
+    },
+    "litersPer100Km": {
+     "city": 8.7,
+     "highway": 6.9,
+     "combined": 7.8
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 296,
+    "co2GramsPerKm": 184,
+    "epaGreenhouseGasScore": 6,
+    "epaFuelEconomyScore": 6,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 2150,
+    "fiveYearSavingsVsAverageUsd": -250
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Sample Auto Trailmark SUV AWD \u2014 Gasoline, Automatic (S8), All-Wheel Drive, 30 MPG combined"
+  },
+  "9006": {
+   "id": 9006,
+   "year": 2024,
+   "make": "Sample Auto",
+   "model": "Trailmark Plug-in AWD",
+   "baseModel": "Trailmark Plug-in",
+   "vehicleClass": "Small Sport Utility Vehicle 4WD",
+   "powertrain": "Plug-in Hybrid",
+   "drivetrain": "All-Wheel Drive",
+   "engine": {
+    "cylinders": 4,
+    "displacementL": 2.5,
+    "turbocharged": false,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": "Front 134 kW, rear 40 kW",
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 1,
+    "description": "Automatic (variable gear ratios)",
+    "continuouslyVariable": true
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": "Electricity"
+   },
+   "interior": {
+    "body": "SUV",
+    "passengerVolumeCuFt": 99,
+    "luggageVolumeCuFt": 33
+   },
+   "fuelEconomy": {
+    "mpg": {
+     "city": 40,
+     "highway": 36,
+     "combined": 38
+    },
+    "litersPer100Km": {
+     "city": 5.9,
+     "highway": 6.5,
+     "combined": 6.2
+    },
+    "electric": {
+     "kWhPer100Miles": {
+      "city": 34.0,
+      "highway": 36.0,
+      "combined": 35.0
+     },
+     "rangeMiles": 42,
+     "rangeKm": 68,
+     "chargeTimeHours240V": 4.5
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 102,
+    "co2GramsPerKm": 63,
+    "epaGreenhouseGasScore": 9,
+    "epaFuelEconomyScore": 8,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 1400,
+    "fiveYearSavingsVsAverageUsd": 3500
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Sample Auto Trailmark Plug-in AWD \u2014 Plug-in Hybrid, Automatic (variable gear ratios), All-Wheel Drive, 38 MPG combined"
+  },
+  "9007": {
+   "id": 9007,
+   "year": 2024,
+   "make": "Sample Auto",
+   "model": "Ridgeway Pickup 4WD",
+   "baseModel": "Ridgeway Pickup",
+   "vehicleClass": "Standard Pick-up Trucks 4WD",
+   "powertrain": "Gasoline",
+   "drivetrain": "4-Wheel Drive",
+   "engine": {
+    "cylinders": 6,
+    "displacementL": 3.5,
+    "turbocharged": true,
+    "supercharged": false,
+    "cylinderDeactivation": false,
+    "startStop": true,
+    "description": "Demo engine"
+   },
+   "electricMotor": null,
+   "transmission": {
+    "type": "Automatic",
+    "speeds": 10,
+    "description": "Automatic (S10)",
+    "continuouslyVariable": false
+   },
+   "fuel": {
+    "type": "Regular",
+    "primary": "Regular Gasoline",
+    "secondary": null
+   },
+   "interior": null,
+   "fuelEconomy": {
+    "mpg": {
+     "city": 18,
+     "highway": 23,
+     "combined": 20
+    },
+    "litersPer100Km": {
+     "city": 13.1,
+     "highway": 10.2,
+     "combined": 11.8
+    },
+    "mpgEstimateRevised": false
+   },
+   "emissions": {
+    "co2GramsPerMile": 444,
+    "co2GramsPerKm": 276,
+    "epaGreenhouseGasScore": 4,
+    "epaFuelEconomyScore": 4,
+    "epaSmogScore": 7,
+    "gasGuzzlerTax": false
+   },
+   "costs": {
+    "annualFuelCostUsd": 3250,
+    "fiveYearSavingsVsAverageUsd": -5750
+   },
+   "source": {
+    "name": "Demo data",
+    "url": null
+   },
+   "summary": "2024 Sample Auto Ridgeway Pickup 4WD \u2014 Gasoline, Automatic (S10), 4-Wheel Drive, 20 MPG combined"
+  }
+ },
+ "trims": {
+  "9001": {
+   "id": 9001,
+   "name": "Aurora Sedan Automatic (AV-S7)",
+   "model": "Aurora Sedan",
+   "option": "Automatic (AV-S7), 4 cyl, 2.0 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 7,
+   "cylinders": 4,
+   "displacementL": 2.0,
+   "turbo": false,
+   "supercharged": false
+  },
+  "9002": {
+   "id": 9002,
+   "name": "Aurora Sedan Turbo Automatic (S10)",
+   "model": "Aurora Sedan Turbo",
+   "option": "Automatic (S10), 4 cyl, 1.5 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 10,
+   "cylinders": 4,
+   "displacementL": 1.5,
+   "turbo": true,
+   "supercharged": false
+  },
+  "9003": {
+   "id": 9003,
+   "name": "Aurora Hybrid Automatic (variable gear ratios)",
+   "model": "Aurora Hybrid",
+   "option": "Automatic (variable gear ratios), 4 cyl, 2.0 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 1,
+   "cylinders": 4,
+   "displacementL": 2.0,
+   "turbo": false,
+   "supercharged": false
+  },
+  "9004": {
+   "id": 9004,
+   "name": "Volt-E Crossover Automatic (A1)",
+   "model": "Volt-E Crossover",
+   "option": "Automatic (A1), electric",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 1,
+   "cylinders": null,
+   "displacementL": null,
+   "turbo": false,
+   "supercharged": false
+  },
+  "9005": {
+   "id": 9005,
+   "name": "Trailmark SUV AWD Automatic (S8)",
+   "model": "Trailmark SUV AWD",
+   "option": "Automatic (S8), 4 cyl, 2.5 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 8,
+   "cylinders": 4,
+   "displacementL": 2.5,
+   "turbo": false,
+   "supercharged": false
+  },
+  "9006": {
+   "id": 9006,
+   "name": "Trailmark Plug-in AWD Automatic (variable gear ratios)",
+   "model": "Trailmark Plug-in AWD",
+   "option": "Automatic (variable gear ratios), 4 cyl, 2.5 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 1,
+   "cylinders": 4,
+   "displacementL": 2.5,
+   "turbo": false,
+   "supercharged": false
+  },
+  "9007": {
+   "id": 9007,
+   "name": "Ridgeway Pickup 4WD Automatic (S10)",
+   "model": "Ridgeway Pickup 4WD",
+   "option": "Automatic (S10), 6 cyl, 3.5 L",
+   "transmission": "Automatic",
+   "transmissionSpeeds": 10,
+   "cylinders": 6,
+   "displacementL": 3.5,
+   "turbo": true,
+   "supercharged": false
+  }
+ },
+ "makes": [
+  "Demo Motors",
+  "Sample Auto"
+ ],
+ "models": {
+  "Demo Motors": [
+   "Aurora Sedan",
+   "Aurora Sedan Turbo",
+   "Aurora Hybrid",
+   "Volt-E Crossover"
+  ],
+  "Sample Auto": [
+   "Trailmark SUV AWD",
+   "Trailmark Plug-in AWD",
+   "Ridgeway Pickup 4WD"
+  ]
+ },
+ "dimensions": {
+  "variant": "Demo body",
+  "generationStartYear": 2022,
+  "metric": {
+   "lengthCm": 486,
+   "widthCm": 186,
+   "heightCm": 145,
+   "wheelbaseCm": 283,
+   "frontTrackCm": 160,
+   "rearTrackCm": 161,
+   "curbWeightKg": 1460
+  },
+  "imperial": {
+   "lengthIn": 191.3,
+   "widthIn": 73.2,
+   "heightIn": 57.1,
+   "wheelbaseIn": 111.4,
+   "frontTrackIn": 63,
+   "rearTrackIn": 63.4,
+   "curbWeightLb": 3219
+  },
+  "weightDistribution": {
+   "frontPercent": 59,
+   "rearPercent": 41
+  }
+ },
+ "safety": {
+  "vehicleId": 1,
+  "description": "2024 Demo Motors Aurora Sedan 4 DR FWD",
+  "overallRating": "5",
+  "frontCrash": {
+   "overall": "5",
+   "driverSide": "5",
+   "passengerSide": "5"
+  },
+  "sideCrash": {
+   "overall": "5",
+   "driverSide": "5",
+   "passengerSide": "5",
+   "pole": "5"
+  },
+  "rollover": {
+   "rating": "4",
+   "probability": 0.098
+  },
+  "safetyTech": {
+   "electronicStabilityControl": "Standard",
+   "forwardCollisionWarning": "Standard",
+   "laneDepartureWarning": "Standard"
+  },
+  "images": []
+ },
+ "image": {
+  "title": "Demo vehicle",
+  "url": "/car.svg",
+  "thumbnailUrl": "/car.svg",
+  "width": 1200,
+  "height": 675,
+  "license": "CC0",
+  "licenseUrl": null,
+  "author": "Demo",
+  "attributionRequired": false,
+  "attribution": "Sample illustration (demo mode)",
+  "sourceUrl": null,
+  "source": "Demo",
+  "matchesYear": true
+ }
+}
